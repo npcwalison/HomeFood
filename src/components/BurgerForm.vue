@@ -29,11 +29,11 @@
           </div><!--checkbox-container-->
           <div class="checkbox-container">
             <input type="checkbox" name="opcionais" v-model="opcionais" value="salame">
-            <span>Salame</span>
+            <span>Queijo</span>
           </div><!--checkbox-container-->
           <div class="checkbox-container">
             <input type="checkbox" name="opcionais" v-model="opcionais" value="salame">
-            <span>Salame</span>
+            <span>Pepino</span>
           </div><!--checkbox-container-->
         </div><!--input-container-->
         <div class="input-container">
@@ -46,7 +46,31 @@
 
 <script>
   export default {
-    name: "BurgerForm"
+    name: "BurgerForm",
+    data(){
+      return {
+        paes: null,
+        carnes: null,
+        opcionaisdata: null,
+        nome: null,
+        pao: null,
+        carne: null,
+        opcionais: [],
+        status: "Solicitado",
+        msg: null
+      }
+    },
+    methods: {
+      async grtIngredents() {
+        const req = await fetch("http://localhost:3000/ingredientes")
+        const data = await req.json()
+
+        console.log(data)
+      }
+    },
+    mounted() {
+      this.grtIngredents()
+    }
   }
 </script>
 
