@@ -82,9 +82,14 @@
 
         const res = await req.json()
 
-        //solocar uma mnessagem de sistema
+        //solocar uma menssagem de sistema
+
 
         //limpar os campos
+        this.nome = "";
+        this.carne = "";
+        this.pao = "";
+        this.opcionais = "";
       }
     },
     mounted() {
