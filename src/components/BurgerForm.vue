@@ -2,10 +2,10 @@
   <div>
     <p>Component Menssagem</p>
     <div>
-      <form id="burger-form">
+      <form id="burger-form" @submit="createBurger">
         <div class="input-container">
           <label for="name">Nome do Cliente:</label>
-          <input type="text" id="name" name="name" v-model="name" placeholder="Digite o seu nome.">
+          <input type="text" id="name" name="nome" v-model="nome" placeholder="Digite o seu nome.">
         </div><!--input-container-->
         <div class="input-container">
           <label for="pao">Escolha o pão:</label>
@@ -24,7 +24,7 @@
         <div id="opcionais-container" class="input-container">
           <label id="opcionais-title" for="opcionais">Selecione os opcionais:</label>
           <div class="checkbox-container" v-for="opcional in opcionaisdata" :key="opcional.id">
-            <input type="checkbox" name="opcionais" v-model="opcionais" value="salame">
+            <input type="checkbox" name="opcionais" v-model="opcionais" :value="opcional.tipo">
             <span>{{opcional.tipo}}</span>
           </div><!--checkbox-container-->
         </div><!--input-container-->
@@ -48,7 +48,6 @@
         pao: null,
         carne: null,
         opcionais: [],
-        status: "Solicitado",
         msg: null
       }
     },
@@ -60,6 +59,32 @@
         this.paes = data.paes;
         this.carnes = data.carnes;
         this.opcionaisdata = data.opcionais;
+      },
+      async createBurger(e){
+        e.preventDefault()
+
+        //recebe os dados do formulario
+        const data = {
+          nome: this.nome,
+          carne: this.carne,
+          pao: this.pao,
+          opcionais: Array.from(this.opcionais),
+          status: "Solicitado"
+        }
+        //converte os dados em texto JSON
+        const dataJson = JSON.stringify(data);
+        //envia os dados para o Array "burgers" no arquivo Json
+        const req = await fetch("http://localhost:3000/burgers", {
+          method: "POST", //tipo de conexão
+          headers: {"Content-Type": "application/json"}, //tipo de dados
+          body: dataJson //array com os dados de envio
+        });
+
+        const res = await req.json()
+
+        //solocar uma mnessagem de sistema
+
+        //limpar os campos
       }
     },
     mounted() {
