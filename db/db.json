@@ -99,6 +99,28 @@
       ],
       "status": "Solicitado",
       "id": 2
+    },
+    {
+      "nome": "Walls",
+      "carne": 1,
+      "pao": "3 Queijos",
+      "opcionais": [
+        "Salame",
+        "Cheddar"
+      ],
+      "status": "Solicitado",
+      "id": 3
+    },
+    {
+      "nome": "Kroker",
+      "carne": 1,
+      "pao": "Italiano Branco",
+      "opcionais": [
+        "Cebola roxa",
+        "Pepino"
+      ],
+      "status": "Solicitado",
+      "id": 4
     }
   ]
 }
