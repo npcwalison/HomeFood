@@ -13,15 +13,14 @@
   </div>
   <div id="burger-table-rows">
     <div class="burger-table-row" v-for="burger in burgers" :key="burger.id">
-      <div class="order-number">{{ burger.id }}</div>
-      <div>{{ burger.nome }}</div>
-      <div>{{ burger.pao }}</div>
-      <div>{{ burger.carne }}</div>
+      <div class="order-number"></div>
+      <div>Nome do CLiente</div>
+      <div>Pão de trigo</div>
+      <div>Maminha</div>
       <div>
         <ul>
-          <li v-for="(opcionail, index) in burger.opcionais" :key="index">
-            {{ opcionail }}
-          </li>
+          <li>Salame</li>
+          <li>Tomate</li>
         </ul>
       </div>
       <div>
