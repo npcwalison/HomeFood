@@ -43,7 +43,6 @@
     name: "BurgerForm",
     components: {
     Message,
-    Message
 },
     data(){
       return {
