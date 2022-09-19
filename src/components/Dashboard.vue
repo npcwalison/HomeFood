@@ -13,10 +13,10 @@
   </div>
   <div id="burger-table-rows">
     <div class="burger-table-row" v-for="burger in burgers" :key="burger.id">
-      <div class="order-number"></div>
-      <div>Nome do CLiente</div>
-      <div>Pão de trigo</div>
-      <div>Maminha</div>
+      <div class="order-number">{{ burger.id }}</div>
+      <div>{{ burger.nome }}</div>
+      <div>{{ burger.pao }}</div>
+      <div>{{ burger.carne }}</div>
       <div>
         <ul>
           <li>Salame</li>
@@ -38,7 +38,7 @@ export default {
   name: 'Dashboard',
   data() {
     return {
-      burger: null,
+      burgers: null,
       burger_id: null,
       status: []
     }
