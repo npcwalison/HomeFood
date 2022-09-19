@@ -19,15 +19,19 @@
       <div>{{ burger.carne }}</div>
       <div>
         <ul>
-          <li>Salame</li>
-          <li>Tomate</li>
+          <li v-for="(opcional, index) in burger.opcionais" :key="index">
+            {{ opcional }}
+          </li>
         </ul>
       </div>
       <div>
         <select name="status" id="status">
-          <option value="">Selecione</option>
+          <!--selected compara o valor do objeto com o status, para indicar qual status deve apresentar no objeto-->
+          <option v-for="estado in status" :key="estado.id" value="estado.tipo" :selected="burger.status == estado.tipo">
+            {{ estado.tipo }}
+          </option>
         </select>
-        <button class="delete-btn">Cancelar</button>
+        <button class="delete-btn" @click="deleteBurger(burger.id)">Cancelar</button>
       </div>
     </div><!--burger-table-row-->
   </div>
@@ -51,9 +55,32 @@ export default {
 
       this.burgers = data;
 
-      console.log(this.burgers)
+      
+      // console.log(this.burgers)
 
       //resgatar status
+      this.getStatus()
+
+    },
+    async getStatus() {
+      const req = await fetch("http://localhost:3000/status");
+
+      const data = await req.json()
+
+      this.status = data;
+
+      // console.log(this.status)
+    }, async deleteBurger(id){
+      const req = await fetch(`http://localhost:3000/burgers/${id}`, {
+        method: "DELETE"
+      });
+
+      const res = await req.json()
+
+
+      //msg
+
+      this.getRequests()
     }
   },
   mounted() {
