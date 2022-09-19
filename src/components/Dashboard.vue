@@ -25,9 +25,9 @@
         </ul>
       </div>
       <div>
-        <select name="status" id="status">
+        <select name="status" id="status" @change="getUpdate($event,burger.id)">
           <!--selected compara o valor do objeto com o status, para indicar qual status deve apresentar no objeto-->
-          <option v-for="estado in status" :key="estado.id" value="estado.tipo" :selected="burger.status == estado.tipo">
+          <option v-for="estado in status" :key="estado.id" :value="estado.tipo" :selected="burger.status == estado.tipo">
             {{ estado.tipo }}
           </option>
         </select>
@@ -81,6 +81,24 @@ export default {
       //msg
 
       this.getRequests()
+    },
+    //atualizar status
+    async getUpdate(event, id) {
+      const option = event.target.value;
+
+      const dataJson = JSON.stringify({ status: option })
+
+      const req = await fetch(`http://localhost:3000/burgers/${id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type":"application/json"
+        },
+        body: dataJson
+      });
+
+      const res = await req.json()
+
+      console.log(res)
     }
   },
   mounted() {
