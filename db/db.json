@@ -79,15 +79,26 @@
   ],
   "burgers": [
     {
-      "nome": "Guiso",
-      "carne": 2,
-      "pao": "Italiano Branco",
+      "nome": "Luck",
+      "carne": 1,
+      "pao": "Parmesão e Orégano",
       "opcionais": [
         "Bacon",
-        "Pepino"
+        "Tomate"
       ],
-      "status": "Solicitado",
-      "id": 1
+      "status": "Finalizado",
+      "id": 2
+    },
+    {
+      "nome": "Crowln",
+      "carne": 1,
+      "pao": "Italiano Branco",
+      "opcionais": [
+        "Pepino",
+        "Cebola roxa"
+      ],
+      "status": "Finalizado",
+      "id": 3
     }
   ]
 }
